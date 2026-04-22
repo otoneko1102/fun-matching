@@ -89,4 +89,5 @@ body {
 
 @media (max-width: 480px) {
   .term { font-size: 13px; padding: 16px; height: 300px; }
+  .statusbar { flex-direction: column; gap: 2px; }
 }
