@@ -45,9 +45,12 @@ function initInput() {
   inp.setAttribute('autocorrect', 'off');
   inp.setAttribute('autocapitalize', 'off');
   inp.setAttribute('spellcheck', 'false');
-  inp.style.cssText = 'position:fixed;top:-200px;left:0;opacity:0;width:1px;height:1px;pointer-events:none;';
+  inp.style.cssText = 'position:fixed;top:-200px;left:0;opacity:0;width:300px;height:1px;pointer-events:none;';
   document.body.append(inp);
-  inp.addEventListener('input', () => { if (echoEl) echoEl.textContent = inp.value; });
+  const syncEcho = () => { if (echoEl) echoEl.textContent = inp.value; };
+  inp.addEventListener('input', syncEcho);
+  inp.addEventListener('compositionend', syncEcho);
+  inp.addEventListener('keyup', syncEcho);
   inp.addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 'c' && !window.getSelection()?.toString()) {
       e.preventDefault();
@@ -59,6 +62,7 @@ function initInput() {
       return;
     }
     if (e.key !== 'Enter' || !onEnter) return;
+    if (e.isComposing) return;
     e.preventDefault();
     const v = inp.value; inp.value = '';
     cursorEl?.remove(); cursorEl = echoEl = null;
