@@ -1,0 +1,27 @@
+{
+  "appName": "未来大生専用マッチングアプリ",
+  "appDescription": "未来大生による、未来大生のためのマッチングアプリ",
+  "prompt": "fun-matching",
+  "baseUrl": "https://fun-matching.vercel.app",
+  "copyright": "mimifuwacc , marron.",
+  "messages": {
+    "q1": "あなたは未来大生ですか？",
+    "q2": "あなたは男性ですか？",
+    "errorNotStudent": "エラー: 未来大生以外はご利用いただけません",
+    "noMatch": "あなたにマッチする人は見つかりませんでした"
+  },
+  "hiddenCommands": {
+    "ping": "pong",
+    "sudo": "Permission denied.",
+    "fun": "Very fun",
+    "repo": "https://github.com/otoneko1102/fun-matching",
+    "ls": "index.html\nscript.js\nstyle.css\nutopia_profile2.json",
+    "neko": "nyaa",
+    "author": "https://github.com/otoneko1102",
+    "810": "Dirty request."
+  },
+  "inspiredBy": {
+    "label": "電通大生専用マッチングアプリ",
+    "url": "https://uec-matching.mimifuwacc.workers.dev/"
+  }
+}

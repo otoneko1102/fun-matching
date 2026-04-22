@@ -1,0 +1,52 @@
+---
+import config from '../data/config.json';
+import '../styles/terminal.css';
+
+const { appName, appDescription, baseUrl, copyright, prompt, messages, hiddenCommands, inspiredBy } = config;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{appName}</title>
+    <meta name="generator" content={Astro.generator} />
+
+    <meta name="description" content={appDescription} />
+
+    <meta property="og:title" content={appName} />
+    <meta property="og:description" content={appDescription} />
+    <meta property="og:url" content={`${baseUrl}/`} />
+    <meta property="og:image" content={`${baseUrl}/og.png`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={appName} />
+
+    <meta name="twitter:title" content={appName} />
+    <meta name="twitter:description" content={appDescription} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={`${baseUrl}/og.png`} />
+  </head>
+  <body>
+    <div class="window">
+      <div class="titlebar"><span>{prompt}</span><span class="titlebar-name">{appName}</span></div>
+      <div
+        class="term"
+        id="term"
+        data-prompt={prompt}
+        data-messages={JSON.stringify(messages)}
+        data-hidden-commands={JSON.stringify(hiddenCommands)}
+      ></div>
+      <div class="statusbar">
+        <span>inspired by <a href={inspiredBy.url}>{inspiredBy.label}</a></span>
+        <span>© {copyright}</span>
+      </div>
+    </div>
+
+    <script>
+      import { run } from '../scripts/terminal';
+      const el = document.getElementById('term') as HTMLElement;
+      run(el, { prompt: el.dataset.prompt!, messages: JSON.parse(el.dataset.messages!), hiddenCommands: JSON.parse(el.dataset.hiddenCommands!) });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111;
+  color: #ccc;
+  font-family: 'Courier New', Courier, monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.window {
+  width: 100%;
+  max-width: 680px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.titlebar {
+  background: #222;
+  padding: 8px 16px;
+  border-bottom: 1px solid #333;
+  color: #666;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titlebar-name { color: #888; }
+
+.term {
+  padding: 20px 24px 24px;
+  height: 360px;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.9;
+  scroll-behavior: smooth;
+  cursor: text;
+}
+
+.term::-webkit-scrollbar { width: 6px; }
+.term::-webkit-scrollbar-track { background: transparent; }
+.term::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+.line { display: flex; align-items: baseline; flex-wrap: wrap; min-height: 1.9em; }
+
+.c-prompt  { color: #0f0; }
+.c-cmd     { color: #eee; }
+.c-text    { color: #ccc; }
+.c-yes     { color: #0f0; }
+.c-no      { color: #f44; }
+.c-error   { color: #f44; }
+.c-info    { color: #888; }
+.c-warn    { color: #fa0; }
+.c-loading { color: #4af; }
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: #eee;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.statusbar {
+  border-top: 1px solid #333;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statusbar a { color: #4af; text-decoration: none; }
+.statusbar a:hover { text-decoration: underline; }
+
+.term a { color: #4af; text-decoration: underline; cursor: pointer; }
+.term a:hover { color: #7cf; }
+
+@media (max-width: 480px) {
+  .term { font-size: 13px; padding: 16px; height: 300px; }
+}
