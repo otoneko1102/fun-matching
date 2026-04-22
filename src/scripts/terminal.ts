@@ -144,7 +144,7 @@ async function quit(cfg: AppConfig) {
   while (true) {
     const row = ln(sp('c-prompt', cfg.prompt + '$ '));
     try {
-      const ans = (await read(row)).trim().toLowerCase();
+      const ans = (await read(row)).trim().replace(/\s+/g, ' ').toLowerCase();
       const echo = row.lastChild as HTMLSpanElement;
       if (ans === 'start') { echo.className = 'c-yes'; return session(cfg); }
       if (ans in cfg.hiddenCommands) { ln(spOrLink('c-info', cfg.hiddenCommands[ans])); continue; }
