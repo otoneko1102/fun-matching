@@ -30,6 +30,6 @@ const config = {
   }
 };
 
-config.hiddenCommands.help = `All commands: ${Object.keys(config.hiddenCommands)}`;
+config.hiddenCommands.help = `All commands: ${["start", ...Object.keys(config.hiddenCommands)]}`;
 
 export default config;
